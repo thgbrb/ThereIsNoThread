@@ -1,2 +1,2 @@
 # ThereIsNoThread
-Apresentação feita no meetup PoA NETers #20
+Para executar a demostração, execute como administrador o batch RUN.cmd.
