@@ -14,5 +14,6 @@ namespace TimeApi
             => WebHost
             .CreateDefaultBuilder(args)
             .UseStartup<Startup>();
+        // teste
     }
 }
