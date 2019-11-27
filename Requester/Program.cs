@@ -58,9 +58,16 @@ namespace Requester
         public static Task DoRequest(string url)
             => Task.Run(async () =>
             {
-                await httpClient.GetStringAsync(requestUri: url);
+                try
+                {
+                    await httpClient.GetStringAsync(requestUri: url);
 
-                Console.WriteLine($"{DateTime.Now} - Task completed.");
+                    Console.WriteLine($"{DateTime.Now} - Task completed.");
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine($"{DateTime.Now} - Error - Inner Exception.");
+                }
             });
 
         public static void NotifyEnqueuedRequestAsync()
