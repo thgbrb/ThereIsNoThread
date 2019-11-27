@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Serilog;
 
 namespace TimeApi
 {
@@ -13,7 +14,9 @@ namespace TimeApi
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
             => WebHost
             .CreateDefaultBuilder(args)
-            .UseStartup<Startup>();
-        // teste
+            .UseUrls("http://localhost:5001")
+            .UseStartup<Startup>()
+            .UseSerilog((hc, c) =>
+                c.WriteTo.Console());
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Portal
 {
@@ -19,6 +20,9 @@ namespace Portal
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseUrls("http://localhost:5000")
+                .UseStartup<Startup>()
+                .UseSerilog((hc, c) =>
+                    c.WriteTo.Console());
     }
 }

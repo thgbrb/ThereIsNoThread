@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System;
 using System.Threading;
 
@@ -47,7 +48,7 @@ namespace Portal
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSerilogRequestLogging();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

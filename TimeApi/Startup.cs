@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace TimeApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration) 
+        public Startup(IConfiguration configuration)
             => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
@@ -23,6 +24,7 @@ namespace TimeApi
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseSerilogRequestLogging();
             app.UseMvc();
         }
     }
